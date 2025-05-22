@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=4 uid="uid://by41kq6qmby20"]
+
+[ext_resource type="Texture2D" uid="uid://xdf8xuqhqbjq" path="res://assets/placeholder.png" id="1_dxppu"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gy3sr"]
+texture = ExtResource("1_dxppu")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_t34gm"]
+sources/0 = SubResource("TileSetAtlasSource_gy3sr")
+
+[node name="TestWorld" type="Node"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAABAAoAAAAAAAAAAAACAAoAAAAAAAAAAAADAAoAAAAAAAAAAAAEAAoAAAAAAAAAAAAFAAoAAAAAAAAAAAAGAAoAAAAAAAAAAAAHAAoAAAAAAAAAAAAIAAoAAAAAAAAAAAAJAAoAAAAAAAAAAAAKAAoAAAAAAAAAAAALAAoAAAAAAAAAAAAMAAoAAAAAAAAAAAANAAoAAAAAAAAAAAAOAAoAAAAAAAAAAAAPAAoAAAAAAAAAAAAQAAoAAAAAAAAAAAARAAoAAAAAAAAAAAAQAAYAAAAAAAAAAAAPAAYAAAAAAAAAAAAOAAYAAAAAAAAAAAANAAYAAAAAAAAAAAAMAAYAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_t34gm")
