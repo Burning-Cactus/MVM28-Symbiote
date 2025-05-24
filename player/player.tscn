@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cc2a5lylx720"]
 
-[ext_resource type="Script" uid="uid://dega4ejgwbbdi" path="res://player.gd" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://dega4ejgwbbdi" path="res://player/player.gd" id="1_4flbx"]
 
 [sub_resource type="Gradient" id="Gradient_4flbx"]
 
