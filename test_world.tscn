@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://by41kq6qmby20"]
+[gd_scene load_steps=7 format=4 uid="uid://by41kq6qmby20"]
 
 [ext_resource type="Texture2D" uid="uid://xdf8xuqhqbjq" path="res://resources/placeholder.png" id="1_dxppu"]
 [ext_resource type="PackedScene" uid="uid://cc2a5lylx720" path="res://player/player.tscn" id="2_gy3sr"]
 [ext_resource type="Script" uid="uid://cs46uhgsmikdr" path="res://player/player_camera.gd" id="3_1lwx6"]
+[ext_resource type="PackedScene" uid="uid://b1tjl3oorifqt" path="res://enemies/mobs/slime.tscn" id="4_dsnr4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gy3sr"]
 texture = ExtResource("1_dxppu")
@@ -27,3 +28,6 @@ position = Vector2(67, 34)
 script = ExtResource("3_1lwx6")
 player = NodePath("../Player")
 metadata/_custom_type_script = "uid://cs46uhgsmikdr"
+
+[node name="slime" parent="." instance=ExtResource("4_dsnr4")]
+position = Vector2(171, 140)

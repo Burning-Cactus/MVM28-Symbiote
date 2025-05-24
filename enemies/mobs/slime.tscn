@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1tjl3oorifqt"]
+
+[ext_resource type="Texture2D" uid="uid://cyurmckaaalw7" path="res://enemies/sprites/slimeplaceholder.png" id="1_vdec5"]
+[ext_resource type="Script" uid="uid://bilvuvk354ubd" path="res://enemies/mobs/hitbox.gd" id="2_wc24c"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f6ujb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_vdec5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vdec5"]
+size = Vector2(32, 32)
+
+[node name="slime" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_f6ujb")
+autoplay = "default"
+
+[node name="hitbox" type="Area2D" parent="."]
+collision_mask = 2
+script = ExtResource("2_wc24c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("RectangleShape2D_vdec5")
+
+[connection signal="body_entered" from="hitbox" to="hitbox" method="_on_body_entered"]
