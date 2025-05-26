@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func hurt(damage: float) -> void:
+func _on_hurt(damage: float) -> void:
 	health -= damage
 	print(health)
 	if health <= 0.0:

@@ -32,8 +32,9 @@ shape = SubResource("RectangleShape2D_sh265")
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("2_rkbax")
-metadata/_custom_type_script = "uid://q877468r564w"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("RectangleShape2D_oul6g")
 debug_color = Color(0.579339, 0.550721, 0.110295, 0.42)
+
+[connection signal="hurt" from="Hurtbox" to="." method="_on_hurt"]

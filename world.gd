@@ -4,5 +4,6 @@ func _ready() -> void:
 	RoomManager.world = self
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_accept"):
-		RoomManager.switch_room(RoomManager.test_2)
+	pass
+	# if Input.is_action_just_pressed("ui_accept"):
+	# 	RoomManager.switch_room(RoomManager.test_2)
