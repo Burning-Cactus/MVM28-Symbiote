@@ -39,7 +39,8 @@ sprite_frames = SubResource("SpriteFrames_xienu")
 autoplay = "default"
 
 [node name="hitbox" type="Area2D" parent="."]
-collision_mask = 2
+collision_layer = 8
+collision_mask = 0
 script = ExtResource("3_1ivff")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
