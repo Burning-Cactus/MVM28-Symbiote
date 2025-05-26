@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://bdphc7i586bet"]
+
+[ext_resource type="Script" uid="uid://dk3ldaj0wuosl" path="res://enemies/mobs/slime/slime.gd" id="1_1tugl"]
+[ext_resource type="Texture2D" uid="uid://cyurmckaaalw7" path="res://enemies/mobs/slime/sprites/slimeplaceholder.png" id="2_k0pmi"]
+[ext_resource type="Script" uid="uid://1cehyj7s0b3a" path="res://hit_box.gd" id="3_1tugl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wc24c"]
+size = Vector2(32, 5)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xienu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_k0pmi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w8rxk"]
+size = Vector2(32, 32)
+
+[node name="slime" type="CharacterBody2D"]
+z_index = -1
+scale = Vector2(1, 1.00834)
+collision_layer = 2
+script = ExtResource("1_1tugl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_as_relative = false
+position = Vector2(0, 13.5)
+shape = SubResource("RectangleShape2D_wc24c")
+one_way_collision = true
+one_way_collision_margin = 0.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xienu")
+autoplay = "default"
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("3_1tugl")
+metadata/_custom_type_script = "uid://1cehyj7s0b3a"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+z_as_relative = false
+shape = SubResource("RectangleShape2D_w8rxk")
+
+[node name="LeftRayCast" type="RayCast2D" parent="."]
+position = Vector2(-23, 16)
+target_position = Vector2(0, 30)
+
+[node name="RightRayCast" type="RayCast2D" parent="."]
+position = Vector2(23, 16)
+target_position = Vector2(0, 30)

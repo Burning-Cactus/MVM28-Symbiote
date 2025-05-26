@@ -3,6 +3,9 @@ extends CharacterBody2D
 const speed = 100.0
 const jump_strength = -400.0
 
+const max_health = 100.0
+var health = max_health
+
 func _physics_process(delta: float) -> void:
 	if !is_on_floor():
 		velocity += get_gravity() * delta
@@ -20,4 +23,13 @@ func _physics_process(delta: float) -> void:
 	velocity.x = direction * current_speed
 	
 	move_and_slide()
-	
+
+
+func hurt(damage: float) -> void:
+	health -= damage
+	print(health)
+	if health <= 0.0:
+		die()
+
+func die() -> void:
+	pass # Commence game over sequence
