@@ -15,6 +15,10 @@ run/main_scene="uid://by41kq6qmby20"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+RoomManager="*res://room_manager.gd"
+
 [display]
 
 window/size/viewport_width=320

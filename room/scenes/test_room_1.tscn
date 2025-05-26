@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=4 uid="uid://c0qnvdtjf63i0"]
+
+[ext_resource type="Script" uid="uid://dia4c0i6nby0a" path="res://room/room.gd" id="1_ksy4o"]
+[ext_resource type="Texture2D" uid="uid://xdf8xuqhqbjq" path="res://resources/placeholder.png" id="2_2y5by"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gy3sr"]
+texture = ExtResource("2_2y5by")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
+
+[sub_resource type="TileSet" id="TileSet_t34gm"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_gy3sr")
+
+[sub_resource type="GDScript" id="GDScript_dsnr4"]
+script/source = "extends Area2D
+
+@onready var view_point = $ViewPoint
+
+func _on_body_entered(body: CharacterBody2D) -> void:
+	if body.get_class() == \"CharacterBody2D\":
+		get_node(\"/root/Main/PlayerCamera\").target = view_point
+
+
+func _on_body_exited(body: CharacterBody2D) -> void:
+	if body.get_class() == \"CharacterBody2D\":
+		get_node(\"/root/Main/PlayerCamera\").target = body
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lf0gk"]
+size = Vector2(86, 64)
+
+[node name="TestRoom1" type="Node2D"]
+script = ExtResource("1_ksy4o")
+metadata/_custom_type_script = "uid://dia4c0i6nby0a"
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAABAAoAAAAAAAAAAAACAAoAAAAAAAAAAAADAAoAAAAAAAAAAAAEAAoAAAAAAAAAAAAFAAoAAAAAAAAAAAAGAAoAAAAAAAAAAAAHAAoAAAAAAAAAAAAIAAoAAAAAAAAAAAAJAAoAAAAAAAAAAAAKAAoAAAAAAAAAAAALAAoAAAAAAAAAAAAMAAoAAAAAAAAAAAANAAoAAAAAAAAAAAAOAAoAAAAAAAAAAAAPAAoAAAAAAAAAAAAQAAoAAAAAAAAAAAARAAoAAAAAAAAAAAAQAAYAAAAAAAAAAAAPAAYAAAAAAAAAAAAOAAYAAAAAAAAAAAANAAYAAAAAAAAAAAAMAAYAAAAAAAAAAAASAAoAAAAAAAAAAAATAAoAAAAAAAAAAAAUAAoAAAAAAAAAAAAVAAoAAAAAAAAAAAAWAAoAAAAAAAAAAAAXAAoAAAAAAAAAAAAYAAoAAAAAAAAAAAAZAAoAAAAAAAAAAAAaAAoAAAAAAAAAAAAbAAoAAAAAAAAAAAAcAAoAAAAAAAAAAAAdAAoAAAAAAAAAAAAeAAoAAAAAAAAAAAAfAAoAAAAAAAAAAAAgAAoAAAAAAAAAAAAhAAoAAAAAAAAAAAAiAAoAAAAAAAAAAAAjAAoAAAAAAAAAAAAkAAoAAAAAAAAAAAARAAYAAAAAAAAAAAASAAYAAAAAAAAAAAATAAYAAAAAAAAAAAAUAAYAAAAAAAAAAAAVAAYAAAAAAAAAAAAWAAYAAAAAAAAAAAAXAAYAAAAAAAAAAAAYAAYAAAAAAAAAAAAZAAYAAAAAAAAAAAAaAAYAAAAAAAAAAAAbAAYAAAAAAAAAAAAcAAYAAAAAAAAAAAAdAAYAAAAAAAAAAAAeAAYAAAAAAAAAAAAfAAYAAAAAAAAAAAAgAAYAAAAAAAAAAAAhAAYAAAAAAAAAAAAiAAYAAAAAAAAAAAAjAAYAAAAAAAAAAAAkAAYAAAAAAAAAAAAqAAoAAAAAAAAAAAAqAAkAAAAAAAAAAAAqAAgAAAAAAAAAAAAqAAcAAAAAAAAAAAAqAAYAAAAAAAAAAAAqAAUAAAAAAAAAAAAqAAQAAAAAAAAAAAAqAAMAAAAAAAAAAAAqAAIAAAAAAAAAAAAqAAEAAAAAAAAAAAAqAAAAAAAAAAAAAAAqAP//AAAAAAAAAAAqAP7/AAAAAAAAAAAqAP3/AAAAAAAAAAAqAPz/AAAAAAAAAAApAAoAAAAAAAAAAAAoAAoAAAAAAAAAAAAnAAoAAAAAAAAAAAAmAAoAAAAAAAAAAAAlAAoAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_t34gm")
+
+[node name="CameraShifter" type="Area2D" parent="."]
+position = Vector2(629, 116)
+collision_layer = 0
+collision_mask = 2
+script = SubResource("GDScript_dsnr4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraShifter"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_lf0gk")
+
+[node name="ViewPoint" type="Node2D" parent="CameraShifter"]
+position = Vector2(0, -29)
+
+[connection signal="body_entered" from="CameraShifter" to="CameraShifter" method="_on_body_entered"]
+[connection signal="body_exited" from="CameraShifter" to="CameraShifter" method="_on_body_exited"]
