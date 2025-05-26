@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dk3ldaj0wuosl" path="res://enemies/mobs/slime/slime.gd" id="1_1tugl"]
 [ext_resource type="Texture2D" uid="uid://cyurmckaaalw7" path="res://enemies/mobs/slime/sprites/slimeplaceholder.png" id="2_k0pmi"]
-[ext_resource type="Script" uid="uid://bilvuvk354ubd" path="res://enemies/mobs/slime/hitbox.gd" id="3_1ivff"]
+[ext_resource type="Script" uid="uid://1cehyj7s0b3a" path="res://hit_box.gd" id="3_1tugl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wc24c"]
 size = Vector2(32, 5)
@@ -38,12 +38,13 @@ one_way_collision_margin = 0.0
 sprite_frames = SubResource("SpriteFrames_xienu")
 autoplay = "default"
 
-[node name="hitbox" type="Area2D" parent="."]
-collision_layer = 8
-collision_mask = 0
-script = ExtResource("3_1ivff")
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("3_1tugl")
+metadata/_custom_type_script = "uid://1cehyj7s0b3a"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 z_as_relative = false
 shape = SubResource("RectangleShape2D_w8rxk")
 
@@ -54,5 +55,3 @@ target_position = Vector2(0, 30)
 [node name="RightRayCast" type="RayCast2D" parent="."]
 position = Vector2(23, 16)
 target_position = Vector2(0, 30)
-
-[connection signal="body_entered" from="hitbox" to="hitbox" method="_on_body_entered"]

@@ -29,8 +29,8 @@ texture = SubResource("GradientTexture2D_onrkg")
 shape = SubResource("RectangleShape2D_sh265")
 
 [node name="Hurtbox" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 8
+collision_layer = 8
+collision_mask = 0
 script = ExtResource("2_rkbax")
 metadata/_custom_type_script = "uid://q877468r564w"
 

@@ -1,12 +1,11 @@
 class_name HurtBox
 extends Area2D
 
-var parent: Node
+var parent: Node2D
 
 func _ready():
 	assert(get_parent().has_method("hurt"))
 	parent = get_parent()
-	area_entered.connect(take_damage)
 	
-func take_damage(hit_box: Area2D):
-	parent.hurt(4)
+func take_damage(damage: float):
+	parent.hurt(damage)
