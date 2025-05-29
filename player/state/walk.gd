@@ -1,17 +1,15 @@
 extends State
 
-
 # Initialize the entity's new state
 func start():
-	parent.play_animation("idle")
+	pass
 
 # Called every frame
-func update(delta: float):
-	if Input.is_action_pressed("slide"):
-		state_machine.switch_state("slide")
+func update(delta):
+	pass
 
 # Called every physics frame
-func physics_update(delta: float):
+func physics_update(delta):
 	pass
 
 # Clean up in preparation for the next state

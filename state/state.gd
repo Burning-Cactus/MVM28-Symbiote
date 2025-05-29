@@ -1,14 +1,16 @@
-extends State
+class_name State
+extends Node
 
+var parent: Node2D
+@onready var state_machine: StateMachine = get_parent()
 
 # Initialize the entity's new state
 func start():
-	parent.play_animation("idle")
+	pass
 
 # Called every frame
 func update(delta: float):
-	if Input.is_action_pressed("slide"):
-		state_machine.switch_state("slide")
+	pass
 
 # Called every physics frame
 func physics_update(delta: float):

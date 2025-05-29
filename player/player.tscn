@@ -1,11 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://cc2a5lylx720"]
+[gd_scene load_steps=12 format=3 uid="uid://cc2a5lylx720"]
 
 [ext_resource type="Script" uid="uid://dega4ejgwbbdi" path="res://player/player.gd" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://q877468r564w" path="res://hurt_box.gd" id="2_rkbax"]
 [ext_resource type="Texture2D" uid="uid://ckmim5lul2u3d" path="res://resources/idle.png" id="2_yw30f"]
 [ext_resource type="Texture2D" uid="uid://b3x0yg5vor35n" path="res://resources/slide.png" id="3_qjkh3"]
-[ext_resource type="Script" uid="uid://c1wfmsolmrgg8" path="res://state_machine.gd" id="5_boad6"]
+[ext_resource type="Script" uid="uid://c1wfmsolmrgg8" path="res://state/state_machine.gd" id="5_boad6"]
 [ext_resource type="Script" uid="uid://d1v1fap4flkm7" path="res://player/state/idle.gd" id="6_rgyib"]
+[ext_resource type="Script" uid="uid://gfktxuaek3o2" path="res://player/state/jump.gd" id="7_boad6"]
 [ext_resource type="Script" uid="uid://dgqdlxhkcyms0" path="res://player/state/slide.gd" id="7_hg6s5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g6k8r"]
@@ -61,5 +62,10 @@ metadata/_custom_type_script = "uid://c1wfmsolmrgg8"
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("6_rgyib")
 
+[node name="Jump" type="Node" parent="StateMachine"]
+script = ExtResource("7_boad6")
+metadata/_custom_type_script = "uid://b4qr0hsy4bjt1"
+
 [node name="Slide" type="Node" parent="StateMachine"]
 script = ExtResource("7_hg6s5")
+metadata/_custom_type_script = "uid://b4qr0hsy4bjt1"

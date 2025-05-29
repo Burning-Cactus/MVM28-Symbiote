@@ -1,11 +1,18 @@
-extends Node
+extends State
 
+# Initialize the entity's new state
+func start():
+	parent.play_animation("slide")
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+# Called every frame
+func update(delta: float):
+	if abs(parent.velocity.x) < 0.05:
+		state_machine.switch_state("idle")
 
+# Called every physics frame
+func physics_update(delta: float):
+	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+# Clean up in preparation for the next state
+func stop():
 	pass

@@ -6,6 +6,7 @@ const jump_strength = -400.0
 const max_health = 100.0
 var health = max_health
 
+@onready var state_machine: StateMachine = $StateMachine
 
 
 func _physics_process(delta: float) -> void:
@@ -29,9 +30,12 @@ func _physics_process(delta: float) -> void:
 
 func hurt(damage: float) -> void:
 	health -= damage
-	print(health)
 	if health <= 0.0:
 		die()
 
 func die() -> void: # Commence game over sequence
 	get_tree().change_scene_to_file("res://game_over.tscn")
+
+
+func play_animation(animation: String) -> void:
+	$AnimatedSprite2D.play(animation)

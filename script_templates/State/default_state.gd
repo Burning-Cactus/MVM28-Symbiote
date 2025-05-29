@@ -1,14 +1,16 @@
-extends State
+# meta-name: State Machine Node
+# meta-description: Default template for creating an entity state
+# meta-default: true
 
+extends State
 
 # Initialize the entity's new state
 func start():
-	parent.play_animation("idle")
+	pass
 
 # Called every frame
 func update(delta: float):
-	if Input.is_action_pressed("slide"):
-		state_machine.switch_state("slide")
+	pass
 
 # Called every physics frame
 func physics_update(delta: float):
