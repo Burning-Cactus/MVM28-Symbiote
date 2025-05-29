@@ -1,10 +1,12 @@
 extends CharacterBody2D
 
-const speed = 100.0
+const speed = 150.0
 const jump_strength = -400.0
 
 const max_health = 100.0
 var health = max_health
+
+
 
 func _physics_process(delta: float) -> void:
 	if !is_on_floor():
@@ -31,5 +33,5 @@ func hurt(damage: float) -> void:
 	if health <= 0.0:
 		die()
 
-func die() -> void:
-	pass # Commence game over sequence
+func die() -> void: # Commence game over sequence
+	get_tree().change_scene_to_file("res://game_over.tscn")
