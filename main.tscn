@@ -19,3 +19,15 @@ position = Vector2(67, 34)
 script = ExtResource("3_lquwl")
 player = NodePath("../Player")
 metadata/_custom_type_script = "uid://cs46uhgsmikdr"
+
+[node name="RoomTransitionLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="RoomTransitionLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
