@@ -68,3 +68,4 @@ target_position = Vector2(0, 0)
 collision_mask = 2
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="child_exiting_tree" from="ShapeCast2D" to="." method="_on_shape_cast_2d_child_exiting_tree"]
