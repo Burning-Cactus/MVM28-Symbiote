@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdphc7i586bet"]
+[gd_scene load_steps=8 format=3 uid="uid://bdphc7i586bet"]
 
 [ext_resource type="Script" uid="uid://dk3ldaj0wuosl" path="res://enemies/mobs/slime/slime.gd" id="1_1tugl"]
 [ext_resource type="Texture2D" uid="uid://cyurmckaaalw7" path="res://enemies/mobs/slime/sprites/slimeplaceholder.png" id="2_k0pmi"]
@@ -20,6 +20,9 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w8rxk"]
 size = Vector2(32, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1tugl"]
+radius = 150.0
 
 [node name="slime" type="CharacterBody2D"]
 z_index = -1
@@ -55,3 +58,13 @@ target_position = Vector2(0, 30)
 [node name="RightRayCast" type="RayCast2D" parent="."]
 position = Vector2(23, 16)
 target_position = Vector2(0, 30)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+shape = SubResource("CircleShape2D_1tugl")
+target_position = Vector2(0, 0)
+collision_mask = 2
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
