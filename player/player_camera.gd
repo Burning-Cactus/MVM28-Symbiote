@@ -11,4 +11,4 @@ func _ready() -> void:
 
 # Follow the target.
 func _process(delta: float) -> void:
-	position = target.position
+	position = target.global_position
