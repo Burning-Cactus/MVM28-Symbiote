@@ -20,10 +20,6 @@ func _ready() -> void:
 		default_state = children[0]
 	
 	active_state = default_state
-	
-	for node in states.values():
-		print("State: ", node)
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -34,6 +30,7 @@ func _physics_process(delta: float):
 
 # Call this to make a clean switch to a new state.
 func switch_state(new_state: String):
+	# print("New state: ", new_state)
 	active_state.stop()
 	active_state = states[new_state]
 	active_state.start()

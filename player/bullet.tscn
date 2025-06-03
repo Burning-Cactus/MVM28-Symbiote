@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdk7m2i7kdrwl"]
+
+[ext_resource type="Script" uid="uid://1cehyj7s0b3a" path="res://hit_box.gd" id="1_h6gl0"]
+[ext_resource type="Script" uid="uid://ulng2x6sbm4b" path="res://player/bullet.gd" id="1_j40gx"]
+
+[sub_resource type="Gradient" id="Gradient_sbiib"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4sosn"]
+gradient = SubResource("Gradient_sbiib")
+width = 6
+height = 6
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n70q0"]
+size = Vector2(6, 6)
+
+[node name="Bullet" type="Node2D"]
+script = ExtResource("1_j40gx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(5.96046e-07, -5.96046e-08)
+texture = SubResource("GradientTexture2D_4sosn")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_h6gl0")
+strength = 4.0
+metadata/_custom_type_script = "uid://1cehyj7s0b3a"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_n70q0")
+debug_color = Color(0.845375, 0, 0.151503, 0.42)

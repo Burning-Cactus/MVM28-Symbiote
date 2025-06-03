@@ -1,7 +1,7 @@
 class_name State
 extends Node
 
-var parent: Node2D
+var parent: CharacterBody2D
 @onready var state_machine: StateMachine = get_parent()
 
 # Initialize the entity's new state

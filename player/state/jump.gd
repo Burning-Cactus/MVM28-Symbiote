@@ -2,16 +2,9 @@ extends State
 
 # Initialize the entity's new state
 func start():
-	pass
-
-# Called every frame
-func update(delta):
-	pass
+	parent.velocity.y = parent.jump_strength
 
 # Called every physics frame
 func physics_update(delta):
-	pass
-
-# Clean up in preparation for the next state
-func stop():
-	pass
+	if parent.is_on_floor():
+		state_machine.switch_state("idle")

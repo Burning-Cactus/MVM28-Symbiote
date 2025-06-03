@@ -6,14 +6,25 @@ const jump_strength = -400.0
 const max_health = 100.0
 var health = max_health
 
+@onready var default_shape: Shape2D = $CollisionBox.shape
 @onready var state_machine: StateMachine = $StateMachine
 
+var bullet_scene = preload("res://player/bullet.tscn")
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("shoot"):
+		shoot()
+
+func shoot() -> void:
+	var bullet = bullet_scene.instantiate()
+	get_tree().root.add_child(bullet)
+	
+	bullet.position = Vector2(position.x + 10, position.y)
+	bullet.rotation = 0
 
 func _physics_process(delta: float) -> void:
 	if !is_on_floor():
 		velocity += get_gravity() * delta
-	elif Input.is_action_just_pressed("jump"):
-		velocity.y = jump_strength
 	
 	var direction := Input.get_axis("move_left", "move_right")
 	
@@ -36,6 +47,14 @@ func hurt(damage: float) -> void:
 func die() -> void: # Commence game over sequence
 	get_tree().change_scene_to_file("res://game_over.tscn")
 
-
 func play_animation(animation: String) -> void:
 	$AnimatedSprite2D.play(animation)
+
+func set_collision_box(shape: Shape2D, offset: Vector2 = Vector2.ZERO) -> void:
+	$CollisionBox.shape = shape
+	$CollisionBox.position = offset
+	$Hurtbox/Default.shape = shape
+	$Hurtbox/Default.position = offset
+
+func set_default_collision_box() -> void:
+	set_collision_box(default_shape)
