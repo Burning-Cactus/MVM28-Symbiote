@@ -21,10 +21,11 @@ size = Vector2(16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8drqv"]
 size = Vector2(16, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_63lwy"]
-size = Vector2(20, 30)
+[sub_resource type="CircleShape2D" id="CircleShape2D_858wr"]
+radius = 30.0
 
 [node name="bat" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_858wr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -53,10 +54,13 @@ position = Vector2(12, 8)
 target_position = Vector2(0, 30)
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="."]
-position = Vector2(-64, -7)
-shape = SubResource("RectangleShape2D_63lwy")
+position = Vector2(-64, 0)
+shape = SubResource("CircleShape2D_858wr")
 target_position = Vector2(128, 0)
 collision_mask = 2
 
 [node name="DirectionTimer" type="Timer" parent="."]
 wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="DirectionTimer" to="." method="_on_direction_timer_timeout"]

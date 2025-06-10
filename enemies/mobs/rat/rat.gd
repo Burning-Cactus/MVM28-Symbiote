@@ -29,3 +29,6 @@ func _physics_process(delta: float):
 		velocity += get_gravity() * delta
 		
 	move_and_slide()
+	
+func _on_direction_timer_timeout() -> void:
+	direction *= -1

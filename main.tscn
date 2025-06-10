@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://by41kq6qmby20"]
+[gd_scene load_steps=7 format=3 uid="uid://by41kq6qmby20"]
 
 [ext_resource type="Script" uid="uid://bsw1in4qg60d0" path="res://world.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://c0qnvdtjf63i0" path="res://room/scenes/test_room_1.tscn" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://cc2a5lylx720" path="res://player/player.tscn" id="2_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://dqeuhtnjpvwks" path="res://enemies/mobs/bat/bat.tscn" id="3_7mycd"]
 [ext_resource type="Script" uid="uid://cs46uhgsmikdr" path="res://player/player_camera.gd" id="3_lquwl"]
 [ext_resource type="PackedScene" uid="uid://icfxe6hmrsvl" path="res://enemies/mobs/rat/rat.tscn" id="5_lquwl"]
 
@@ -12,6 +13,9 @@
 script = ExtResource("1_1bvp3")
 
 [node name="TestRoom1" parent="World" instance=ExtResource("1_h2yge")]
+
+[node name="bat" parent="World" instance=ExtResource("3_7mycd")]
+position = Vector2(392, 39)
 
 [node name="Player" parent="." instance=ExtResource("2_1bvp3")]
 position = Vector2(67, 34)
