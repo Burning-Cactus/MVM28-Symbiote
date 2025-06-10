@@ -3,7 +3,7 @@ extends Area2D
 
 var parent: Node2D
 
-var strength: float
+@export var strength: float = 0
 
 func _ready():
 	parent = get_parent()
@@ -11,4 +11,4 @@ func _ready():
 	area_entered.connect(deal_damage)
 
 func deal_damage(hurt_box: HurtBox):
-	hurt_box.take_damage(4)
+	hurt_box.take_damage(strength)
